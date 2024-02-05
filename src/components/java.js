@@ -1,5 +1,6 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import "../css/java.css"
+// Todo add thread
 export default function Java() {
     var primitiveDataTypes = `
           boolean b = true;

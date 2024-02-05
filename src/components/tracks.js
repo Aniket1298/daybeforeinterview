@@ -15,7 +15,7 @@ export default function Tracks(){
         <div className="card" onClick={()=> navigate("/backend")}>
           {/* <img src="backend_image.jpg" alt="Backend" /> */}
           <h2>Backend</h2>
-          <p>Explore the world of server-side development.</p>
+          <p>Explore the world of backend development.</p>
         </div>
         <div className="card">
           {/* <img src="frontend_image.jpg" alt="Frontend" /> */}

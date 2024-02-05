@@ -11,7 +11,8 @@ export default function Java() {
           float f = 3.14159f;
           double d = 3.141592653589793;
         `
-    const stringType = `
+        var nonPrimitiveTypes = [{
+            type: 'String',code: `
             String str = "Hello, World!";
             int length = str.length(); // Returns 13
             char firstChar = str.charAt(0); // Returns 'H'
@@ -28,8 +29,8 @@ export default function Java() {
             String str2 = "HELLO";
             boolean isEqual = str1.equals(str2); // Returns false
             int compareResult = str1.compareTo(str2); // Returns a value < 0 (case-sensitive)
-    `
-    const arrayType = `
+    `},
+    {type: 'Array',code: `
             int[] numbers = new int[5]; // Array of integers with size 5
             int[] primes = {2, 3, 5, 7, 11}; // Array of prime numbers;
             int arrayLength = primes.length; // Returns 5
@@ -37,8 +38,8 @@ export default function Java() {
             int index = Arrays.binarySearch(numbers, 3); // Returns index 2
             String arrayString = Arrays.toString(numbers); // Returns "[1, 2, 3, 4, 5]"
 
-    `
-    const arrayList = `
+    `},
+    {type: 'ArrayList',code: `
     ArrayList<String> names = new ArrayList<>();
     names.add("Alice");
     names.add("Bob");
@@ -57,8 +58,8 @@ export default function Java() {
     for (String name : names) {
         // System.out.println(name);
     }
-    `
-    const hashMap = `
+    `},
+    {type: 'HashMap',code: `
     HashMap<String, Integer> ages = new HashMap<>();
     ages.put("Alice", 25);
     ages.put("Bob", 30);
@@ -80,8 +81,8 @@ export default function Java() {
     for (int age : ages.values()) {
         // Process the value
     }
-    `
-    const setType =    `
+    `},
+    {type: 'Set',code:  `
         Set<String> uniqueNames = new HashSet<>();
         uniqueNames.add("Alice");
         uniqueNames.add("Bob");
@@ -89,35 +90,31 @@ export default function Java() {
         uniqueNames.clear(); 
         int size = uniqueNames.size();
     `
+    },
+    {type: 'Thread',code:  `
+        Set<String> uniqueNames = new HashSet<>();
+        uniqueNames.add("Alice");
+        uniqueNames.add("Bob");
+        uniqueNames.remove("Alice");
+        uniqueNames.clear(); 
+        int size = uniqueNames.size();
+    `
+    },
+    ]
     return (
         <div>
             <div className="java">
-                <h2>Data types</h2>
-                <h2> Primitive Data types</h2>
-                <SyntaxHighlighter className="code" language="java">
-                    {primitiveDataTypes}
+                <h1>
+                    Data Types
+                </h1>
+                {nonPrimitiveTypes.map((item=> <div className='datatype'>
+                    <h2>
+                        {item.type}
+                    </h2>
+                    <SyntaxHighlighter className="code" language="java">
+                    {item.code}
                 </SyntaxHighlighter>
-                <h2>Non Primitive</h2>
-                <h2>String</h2>
-                <SyntaxHighlighter language="java">
-                    {stringType}
-                </SyntaxHighlighter>
-                <h2>Array</h2>
-                <SyntaxHighlighter language="java">
-                    {arrayType}
-                </SyntaxHighlighter>
-                <h2>ArrayList</h2>
-                <SyntaxHighlighter language="java">
-                    {arrayList}
-                </SyntaxHighlighter>
-                <h2>hashMap</h2>
-                <SyntaxHighlighter language="java">
-                    {hashMap}
-                </SyntaxHighlighter>
-                <h2>Set</h2>
-                <SyntaxHighlighter language="java">
-                    {setType}
-                </SyntaxHighlighter>
+                </div>))}
             </div>
 
         </div>
